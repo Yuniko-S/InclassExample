@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="css/style.css">
 
 <!-- Import the component -->
-<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet">
 
 
 </head>
@@ -32,14 +34,14 @@
         <!-- <section class="hero" style="background-image: url('assets/your-image.jpg');"> -->
         <section class="hero">
             <div class="welcome-content">
-                <h2>Welcome to Basic Store</h2>
+                <h1 class="logo">Welcome to Humber Cake Factory Online Store!!</h2>
 
 
-                <src="assets/blackforest.glb" alt="
-blackforest"></src>
-<class='model-viewer'>
-
-</class>
+<!-- Use it like any other HTML element -->
+                <model-viewer alt="bear-cake" src="assets/strawberry.glb" 
+                camera-controls touch-action="pan-y" 
+                auto-rotate
+                class="cake-model"></model-viewer>
 
 
                 <p>Your one-stop shop for simple, quality items.</p>
@@ -51,18 +53,39 @@ blackforest"></src>
             <h2>Featured Products</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <h3>Flower</h3>
-                    <img src="assets/3cakes.jpeg" alt="flower">
+                    <h3>Bear Chocolate</h3>
+                    <model-viewer alt="bear-cake" src="assets/blackforest.glb" 
+                        camera-controls touch-action="pan-y" 
+                        auto-rotate
+                        class="cake-model-1">
+                    </model-viewer>
+  
+
+                                        </div>
+                <div class="product-card">
+                    <h3>Bear Black Cherry</h3>
+                    <model-viewer alt="bear-cake" src="assets/chocolate.glb" 
+                        camera-controls touch-action="pan-y" 
+                        auto-rotate
+                        class="cake-model-1">
+                     </model-viewer>
+                   
                 </div>
                 <div class="product-card">
-                    <h3>blackforest</h3>
-                    <img src="assets/macaron-cake.jpeg" alt="blackforest">
+                    <h3>Flower Cake</h3>
+                    <model-viewer alt="bear-cake" src="assets/flower-25.glb" 
+                        camera-controls touch-action="pan-y" 
+                        auto-rotate
+                        class="cake-model-1">
+                     </model-viewer>
                 </div>
                 <div class="product-card">
-                    <h3>wedding-cake</h3>
-                </div>
-                <div class="product-card">
-                    <h3>Product 4</h3>
+                    <h3>Wedding Cake</h3>
+                    <model-viewer alt="bear-cake" src="assets/wedding-cake.glb" 
+                        camera-controls touch-action="pan-y" 
+                        auto-rotate
+                        class="cake-model-1">
+                     </model-viewer>
                 </div>
             </div>
         </section>

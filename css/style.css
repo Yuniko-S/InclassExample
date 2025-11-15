@@ -8,20 +8,25 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.6;
     color: #333;
-    background-color: #fff;
+    background-image: url('../assets/candy-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
     min-height: 100vh;
 }
 
-/* Main background with image support */
-main.main-background {
-    width: 100%;
-    min-height: calc(100vh - 200px);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* 背景画像を設定する場合は、HTMLでstyle属性を使用するか、ここで直接指定 */
-    /* background-image: url('assets/your-background-image.jpg'); */
+
+.cake-model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
 }
+
+/* Main background with image support */
 
 /* Header Styles */
 header {
@@ -39,8 +44,28 @@ header {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: "Baloo 2", cursive;
+    animation: pulse-glow 3s ease-in-out infinite;
+    color: #fff;
+}
+
+/* パルスとグロウのアニメーション */
+@keyframes pulse-glow {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+                     0 0 20px rgba(255, 255, 255, 0.3),
+                     0 0 30px rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        transform: scale(1.05);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.8),
+                     0 0 30px rgba(255, 255, 255, 0.6),
+                     0 0 40px rgba(255, 255, 255, 0.4),
+                     0 0 50px rgba(255, 255, 255, 0.3);
+    }
 }
 
 nav {
@@ -50,12 +75,12 @@ nav {
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
     font-weight: 500;
 }
 
 nav a:hover {
-    color: #666;
+    color: #3caaf4;
 }
 
 /* Hero Section with 2-column grid */
@@ -91,14 +116,14 @@ nav a:hover {
 }
 
 .cta-button {
-    background-color: #333;
+    background-color: #58bcff;
     color: #fff;
     border: none;
     padding: 0.75rem 2rem;
     font-size: 1rem;
     font-weight: 500;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 10px;
     transition: background-color 0.3s;
 }
 
@@ -133,11 +158,16 @@ nav a:hover {
     border-radius: 8px;
     padding: 2rem;
     text-align: center;
-    transition: box-shadow 0.3s;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    min-height: 350px;
+    color: #58bcff;
 }
 
+
 .product-card:hover {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* transform: scale(1.05); */
+    box-shadow: 6px 8px rgba(255, 255, 255, 0.5);
+
 }
 
 .product-card h3 {
@@ -151,6 +181,13 @@ nav a:hover {
     height: auto;
     max-height: 300px;
     object-fit: cover;
+    border-radius: 4px;
+}
+
+.cake-model-1 {
+    width: 100%;
+    height: 300px;
+    max-height: 300px;
     border-radius: 4px;
 }
 
