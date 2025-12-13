@@ -1,37 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
     const cake = document.getElementById('animated-cake');
     if (!cake) return;
-
+  
     const frameCount = 32;
     const framePath = (index) => {
-        const padded = index.toString().padStart(5, '0');
-        return `assets/cake 2/cake 2_${padded}.png`;
+      const padded = index.toString().padStart(5, '0');
+      return `assets/cake 2/cake 2_${padded}.png`;
     };
-
-    const preload = () => {
-        for (let i = 0; i < frameCount; i += 1) {
-            const img = new Image();
-            img.src = framePath(i);
-        }
-    };
-
+  
+    // preload
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = framePath(i);
+    }
+  
     let currentFrame = 0;
-
-
+    let startScroll = 0;
+    let endScroll = 0;
+    let isActive = false;
+  
     const updateFrame = () => {
-        const maxScroll = document.body.scrollHeight - window.innerHeight;
-        const progress = maxScroll > 0 ? window.scrollY / maxScroll : 0;
-        const targetFrame = Math.min(frameCount - 1, Math.floor(progress * frameCount));
-
-        if (targetFrame !== currentFrame) {
-            cake.src = framePath(targetFrame);
-            currentFrame = targetFrame;
-        }
+      if (!isActive) return;
+  
+      const scrollY = window.scrollY;
+  
+      if (scrollY < startScroll || scrollY > endScroll) return;
+  
+      const progress = Math.min(
+        1,
+        Math.max(
+          0,
+          (scrollY - startScroll) / (endScroll - startScroll)
+        )
+      );
+  
+      const targetFrame = Math.floor(
+        progress * (frameCount - 1)
+      );
+  
+      if (targetFrame !== currentFrame) {
+        cake.src = framePath(targetFrame);
+        currentFrame = targetFrame;
+      }
     };
-
-    preload();
+  
+    const onScroll = () => requestAnimationFrame(updateFrame);
+  
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+  
+        const rect = cake.getBoundingClientRect();
+        const scrollTop = window.scrollY;
+  
+        //再生範囲を広げる
+        startScroll = scrollTop + rect.top - window.innerHeight * 0.7;
+        endScroll   = scrollTop + rect.top + window.innerHeight * 0.3;
+  
+        isActive = true;
+        window.addEventListener('scroll', onScroll);
+      },
+      {
+        threshold: 0.1
+      }
+    );
+  
     cake.src = framePath(0);
-    
-    // Cake animation on scroll
-    window.addEventListener('scroll', () => requestAnimationFrame(updateFrame));
-});
+    observer.observe(cake);
+  });
+  

@@ -16,13 +16,11 @@
 
 </head>
 <body>
-    <video id="background-video" autoplay loop muted playsinline>
-        <source src="assets/background-video.mp4" type="video/mp4">
-    </video>
     <header>
         <div class="header-container">
-            <h1 class="logo">Humber Cake Factory - NEW EXAMPLE</h1>
+            <h1 class="logo">Humber Cake Factory</h1>
             <nav>
+                <a href="#home">Home</a>
                 <a href="#about">About Us</a>
                 <a href="#products">Product</a>
                 <a href="#contact">Contact</a>
@@ -36,22 +34,29 @@
         <!-- Welcomeセクションの背景画像を設定する場合は、以下のようにstyle属性を追加してください -->
         <!-- <section class="hero" style="background-image: url('assets/your-image.jpg');"> -->
         <section class="hero">
+            <video class="hero-video" autoplay loop muted playsinline>
+                <source src="assets/background-video.mp4" type="video/mp4">
+            </video>
             <div class="welcome-content">
                 <h2>Welcome to Humber Cake Factory Online Store!!</h2>
 
 
 <!-- Use it like any other HTML element -->
-                <model-viewer alt="bear-cake" src="assets/strawberry.glb" 
-                camera-controls touch-action="pan-y" 
+                <model-viewer
+                alt="bear-cake"
+                src="assets/strawberry.glb"
                 auto-rotate
-                class="cake-model"></model-viewer>
-                    <img src="assets/cake 2/cake 2_00000.png" id="animated-cake" alt="animated cake">
+                auto-rotate-axis="y"
+                interaction-prompt="none"
+                class="cake-model">
+                </model-viewer>
+                   
 
                 <p>Your one-stop shop for simple, quality items.</p>
                 <button class="cta-button">Shop Now</button>
             </div>
         </section>
-
+        <img src="assets/cake 2/cake 2_00000.png" id="animated-cake" alt="animated cake">
         <section class="featured-products">
             <h2>Featured Products</h2>
             <div class="products-grid">
@@ -92,6 +97,8 @@
                 </div>
             </div>
         </section>
+
+       
     </main>
 
     <footer>

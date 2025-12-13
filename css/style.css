@@ -10,40 +10,44 @@ body {
     color: #ffffff;
     min-height: 100vh;
     position: relative;
+    background-color: #c798ba;
 }
+
 
 p{
     color: #fff;
 }
 
-#background-video {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: -1;
-    pointer-events: none;
-}
 
 
 
 .cake-model {
-    position: fixed;
-    top: 0;
-    left: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100vw;
+    height: 100vh;
     height: 100vh;
     z-index: -1;
 }
 
 /* Main background with image support */
+.main-background {
+    margin-top: 80px;
+}
 
 /* Header Styles */
 header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
     padding: 1rem 2rem;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
 }
 
 .header-container {
@@ -97,18 +101,30 @@ nav a:hover {
 
 /* Hero Section with 2-column grid */
 .hero {
-    padding: 4rem 2rem;
-    max-width: 100%;
+    position: relative;
+    padding: 8rem 2rem;
     width: 100%;
     margin: 0 auto;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    /* 背景画像を設定する場合は、HTMLでstyle属性を使用するか、ここで直接指定 */
-    /* background-image: url('assets/your-background-image.jpg'); */
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .welcome-content {
+    position: relative;
+    z-index: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
@@ -172,27 +188,28 @@ nav a:hover {
 }
 
 .product-card {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 1.5rem;
     text-align: center;
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transition: box-shadow 0.3s ease;
     min-height: 350px;
     color: #58bcff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-
 .product-card:hover {
-    /* transform: scale(1.05); */
-    box-shadow: 6px 8px rgba(255, 255, 255, 0.5);
-
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
 }
 
 .product-card h3 {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
+    color: #333;
 }
 
 .product-card img {
